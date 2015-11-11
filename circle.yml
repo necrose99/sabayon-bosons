@@ -1,0 +1,16 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  cache_directories:
+    - ~/.bosonstate
+  override:
+    - sudo wget 'https://github.com/mudler/boson/releases/download/v0.2.1/boson_linux_amd64' -O /usr/sbin/boson && chmod +x /usr/sbin/boson
+    - sed -i 's/[ARTIFACTS]/$CIRCLE_ARTIFACTS/g' sabayon-distro-amd64.boson
+    - curl -s https://api.github.com/repos/Sabayon/sabayon-distro/commits/master | grep '"sha": "' |  sed -n '1p' | sed 's/  "sha": "//g' | sed 's/",//g'  >  ~/.bosonstate/current_commit
+
+test:
+  override:
+    - if [[ ! -e ~/.bosonstate/last_commit ]]; then cp ~/.bosonstate/current_commit ~/.bosonstate/last_commit; fi
+    - BOSON_FROM=$(cat ~/.bosonstate/last_commit) /usr/sbin/boson -c sabayon-distro-amd64.boson
