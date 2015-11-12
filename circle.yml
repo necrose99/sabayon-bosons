@@ -6,11 +6,15 @@ dependencies:
     - ~/.bosonstate
   override:
     - sudo chmod +x setup.sh && ./setup.sh
-    - sudo chmod +x get_last_commit.sh && ./get_last_commit.sh https://api.github.com/repos/Sabayon/sabayon-distro/commits/master ~/.bosonstate/current_commit ~/.bosonstate/last_commit
-    - BOSON_FROM=$(cat ~/.bosonstate/last_commit) ~/boson -c sabayon-distro-amd64.boson
-    - cp -rfv ~/.bosonstate/current_commit ~/.bosonstate/last_commit
+    - sudo chmod +x get_last_commit.sh
+    - ./get_last_commit.sh https://api.github.com/repos/Sabayon/sabayon-distro/commits/master ~/.bosonstate/sabayon-distro-current_commit ~/.bosonstate/sabayon-distro-last_commit
+    - BOSON_FROM=$(cat ~/.bosonstate/sabayon-distro-last_commit) ~/boson -c sabayon-distro-amd64.boson
+    - cp -rfv ~/.bosonstate/sabayon-distro-current_commit ~/.bosonstate/sabayon-distro-last_commit
+    - ./get_last_commit.sh https://api.github.com/repos/Sabayon/for-gentoo/commits/master ~/.bosonstate/for-gentoo-current_commit ~/.bosonstate/for-gentoo-last_commit
+    - BOSON_FROM=$(cat ~/.bosonstate/for-gentoo-last_commit) ~/boson -c for-gentoo-amd64.boson
+    - cp -rfv ~/.bosonstate/for-gentoo-current_commit ~/.bosonstate/for-gentoo-last_commit
 test:
   override:
-    - if [[ ! -e /artifacts_dir ]]; then sudo cp -rf /artifacts_dir/* $CIRCLECI_ARTIFACTS/; fi
+    - if [[ ! -e /artifacts_dir ]]; then sudo cp -rvf /artifacts_dir/* $CIRCLECI_ARTIFACTS/; fi
     - sudo mkdir -p $CIRCLECI_ARTIFACTS/logs
-    - if [[ ! -e /log_dir ]]; then sudo cp -rf /log_dir/* $CIRCLECI_ARTIFACTS/logs/; fi
+    - if [[ ! -e /log_dir ]]; then sudo cp -rvf /log_dir/* $CIRCLECI_ARTIFACTS/logs/; fi

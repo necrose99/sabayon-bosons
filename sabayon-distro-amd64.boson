@@ -4,5 +4,5 @@ docker_image: sabayon/builder-amd64-squashed
 preprocessor: gentoo.Gentoo
 separate_artifacts: false
 tmpdir: /tmp/boson
-artifacts_dir: /artifacts_dir
-log_dir: /log_dir
+artifacts_dir: /artifacts_dir/sabayon-distro
+log_dir: /log_dir/sabayon-distro
