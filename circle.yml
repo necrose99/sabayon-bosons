@@ -7,6 +7,7 @@ dependencies:
   override:
     - ./setup.sh
     - ./build.sh https://api.github.com/repos/Sabayon/sabayon-distro/commits/master ~/.bosonstate/sabayon-distro-current_commit ~/.bosonstate/sabayon-distro-last_commit sabayon-distro-amd64.boson
+    - ./build.sh https://api.github.com/repos/Sabayon/sabayon-distro/commits/master ~/.bosonstate/sabayon-distro-armhfp-current_commit ~/.bosonstate/sabayon-distro-armhfp-last_commit sabayon-distro-armhfp.boson
     - ./build.sh https://api.github.com/repos/Sabayon/for-gentoo/commits/master ~/.bosonstate/for-gentoo-current_commit ~/.bosonstate/for-gentoo-last_commit for-gentoo-amd64.boson
 test:
   override:

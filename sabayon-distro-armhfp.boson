@@ -1,0 +1,10 @@
+---
+repository: https://github.com/Sabayon/sabayon-distro.git
+docker_image: sabayon/entropy-armhfp
+preprocessor: gentoo.Gentoo
+separate_artifacts: false
+tmpdir: /tmp/boson
+artifacts_dir: /artifacts_dir/sabayon-distro-armhfp
+log_dir: /log_dir/sabayon-distro-armhfp
+volumes:
+    - /usr/bin/qemu-arm-binfmt:/usr/bin/qemu-arm-binfmt:ro
