@@ -13,7 +13,7 @@ curl -s $1 | \
         sed 's/  "sha": "//g' | \
         sed 's/",//g'  > $2
 
-if [[ ! -e $3 ]]; then
+if [[ ! -e $3 ]]  || [[ ! -s $3 ]]; then
   cp -rfv $2 $3
   echo ">> There wasn't a previous commit, saving it to $3"
 fi
