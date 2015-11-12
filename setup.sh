@@ -10,5 +10,8 @@ sudo echo ':arm:M::\x7fELF\x01\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x
 sudo wget 'https://github.com/Sabayon/docker-base-armhfp/raw/master/ext/qemu-arm-static' \
           -O /usr/bin/qemu-arm-binfmt && chmod +x /usr/bin/qemu-arm-binfmt
 
+sudo wget 'https://raw.githubusercontent.com/Sabayon/docker-builder-amd64/master/script/builder' \
+          -O /builder && chmod +x /builder
+
 sudo mkdir -p /log_dir
 sudo mkdir -p /artifacts_dir

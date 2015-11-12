@@ -8,3 +8,4 @@ artifacts_dir: /artifacts_dir/sabayon-distro-armhfp
 log_dir: /log_dir/sabayon-distro-armhfp
 volumes:
     - /usr/bin/qemu-arm-binfmt:/usr/bin/qemu-arm-binfmt:ro
+    - /builder:/builder:ro
