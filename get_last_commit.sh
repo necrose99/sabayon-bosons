@@ -9,4 +9,4 @@ curl -s $1 | \
         sed -n '1p' | \
         sed 's/  "sha": "//g' | \
         sed 's/",//g'  > $2
-if [[ ! -e ~/.bosonstate/last_commit ]]; then cp -rfv $2 $3; fi
+if [[ ! -e $3 ]]; then cp -rfv $2 $3; fi
