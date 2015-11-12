@@ -13,3 +13,8 @@ test:
     - if [[ ! -e /artifacts_dir ]]; then sudo cp -rvf /artifacts_dir/* $CIRCLECI_ARTIFACTS/; fi
     - sudo mkdir -p $CIRCLECI_ARTIFACTS/logs
     - if [[ ! -e /log_dir ]]; then sudo cp -rvf /log_dir/* $CIRCLECI_ARTIFACTS/logs/; fi
+deployment:
+  production: 
+    branch: master
+    commands:
+      - ./deploy.sh
