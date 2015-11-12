@@ -10,11 +10,9 @@ dependencies:
     - ./build.sh https://api.github.com/repos/Sabayon/for-gentoo/commits/master ~/.bosonstate/for-gentoo-current_commit ~/.bosonstate/for-gentoo-last_commit for-gentoo-amd64.boson
 test:
   override:
-    - if [[ ! -e /artifacts_dir ]]; then sudo cp -rvf /artifacts_dir/* $CIRCLECI_ARTIFACTS/; fi
-    - sudo mkdir -p $CIRCLECI_ARTIFACTS/logs
-    - if [[ ! -e /log_dir ]]; then sudo cp -rvf /log_dir/* $CIRCLECI_ARTIFACTS/logs/; fi
+    - if [[ -e /artifacts_dir ]]; then sudo cp -rvf /artifacts_dir/* $CIRCLE_ARTIFACTS/; fi
 deployment:
-  production: 
+  production:
     branch: master
     commands:
       - ./deploy.sh

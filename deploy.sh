@@ -2,8 +2,4 @@
 set -o nounset
 set -o errexit
 
-
-mkdir -p ~/.ssh/ || true
-echo "$DEPLOY_PRIVKEY" > ~/.ssh/id_rsa
-chmod 600 ~/.ssh/id_rsa
-rsync -avp -e "ssh -p $DEPLOY_PORT -i ~/.ssh/id_rsa" $CIRCLECI_ARTIFACTS/* $DEPLOY_SERVER
+rsync -avp -e "ssh -q -p $DEPLOY_PORT" $CIRCLE_ARTIFACTS/* $DEPLOY_SERVER
