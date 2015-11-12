@@ -7,3 +7,4 @@ wget 'https://github.com/mudler/boson/releases/download/v0.2.3/boson_linux_amd64
 
 sudo mkdir -p /log_dir
 sudo mkdir -p /artifacts_dir
+sudo apt-get install -y rsync
