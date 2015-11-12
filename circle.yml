@@ -7,12 +7,10 @@ dependencies:
   override:
     - sudo chmod +x setup.sh && ./setup.sh
     - sudo chmod +x get_last_commit.sh && ./get_last_commit.sh https://api.github.com/repos/Sabayon/sabayon-distro/commits/master ~/.bosonstate/current_commit ~/.bosonstate/last_commit
-test:
-  cache_directories:
-      - ~/.bosonstate
-  override:
     - BOSON_FROM=$(cat ~/.bosonstate/last_commit) ~/boson -c sabayon-distro-amd64.boson
     - cp -rfv ~/.bosonstate/current_commit ~/.bosonstate/last_commit
+test:
+  override:
     - if [[ ! -e /artifacts_dir ]]; then sudo cp -rf /artifacts_dir/* $CIRCLECI_ARTIFACTS/; fi
     - sudo mkdir -p $CIRCLECI_ARTIFACTS/logs
     - if [[ ! -e /log_dir ]]; then sudo cp -rf /log_dir/* $CIRCLECI_ARTIFACTS/logs/; fi
