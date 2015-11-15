@@ -7,3 +7,6 @@ separate_artifacts: false
 tmpdir: /tmp/boson
 artifacts_dir: /artifacts_dir/sabayon-distro
 log_dir: /log_dir/sabayon-distro
+docker_commit: true
+commit:
+  repository: sabayon/builder-amd64

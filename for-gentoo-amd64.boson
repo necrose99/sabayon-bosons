@@ -7,3 +7,6 @@ separate_artifacts: false
 tmpdir: /tmp/boson
 artifacts_dir: /artifacts_dir/for-gentoo
 log_dir: /log_dir/for-gentoo
+docker_commit: true
+commit:
+  repository: sabayon/builder-amd64
