@@ -3,6 +3,7 @@ repository: https://github.com/Sabayon/sabayon-distro.git
 docker_image: sabayon/builder-amd64
 artifacts_dir: /tmp/
 log_dir: /tmp
+docker_skip_pull: true
 separate_artifacts: true
 tmpdir: /tmp/boson
 docker_image_entrypoint:
@@ -10,4 +11,4 @@ docker_image_entrypoint:
         - -c
 provisioner:
   shell.Shell:
-               - git clone https://github.com/Sabayon/sabayon-distro.git /tmp/boson/github.com/Sabayon/sabayon-distro && cd /tmp/boson/github.com/Sabayon/sabayon-distro && /usr/bin/equery has repository sabayon-distro |  sed 's/^.[^ \t]* *[^ \t]* //;s/ .*//' | xargs -n1 /usr/local/bin/depcheck && repoman full
+               - git clone https://github.com/Sabayon/sabayon-distro.git /tmp/boson/github.com/Sabayon/sabayon-distro && cd /tmp/boson/github.com/Sabayon/sabayon-distro && repoman full && /usr/bin/equery has repository sabayon-distro |  sed 's/^.[^ \t]* *[^ \t]* //;s/ .*//' | xargs -n1 /usr/local/bin/depcheck

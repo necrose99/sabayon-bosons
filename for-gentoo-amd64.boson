@@ -1,6 +1,7 @@
 ---
 repository: https://github.com/Sabayon/for-gentoo.git
-docker_image: sabayon/builder-amd64-squashed
+docker_image: sabayon/builder-amd64
+docker_skip_pull: true
 preprocessor: gentoo.Gentoo
 separate_artifacts: false
 tmpdir: /tmp/boson

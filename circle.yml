@@ -4,10 +4,13 @@ machine:
 dependencies:
   cache_directories:
     - ~/.bosonstate
+    - ~/docker
   override:
     - ./scripts/setup.sh
+    - if [[ -e ~/docker/image.tar ]]; then docker load -i ~/docker/image.tar; else docker pull sabayon/builder-amd64; fi
     - ./scripts/build.sh https://api.github.com/repos/Sabayon/sabayon-distro/commits/master ~/.bosonstate/sabayon-distro-current_commit ~/.bosonstate/sabayon-distro-last_commit sabayon-distro-amd64.boson
     - ./scripts/build.sh https://api.github.com/repos/Sabayon/for-gentoo/commits/master ~/.bosonstate/for-gentoo-current_commit ~/.bosonstate/for-gentoo-last_commit for-gentoo-amd64.boson
+    - mkdir -p ~/docker; docker save sabayon/builder-amd64 > ~/docker/image.tar
 test:
   override:
     - if [[ -e /artifacts_dir ]]; then sudo cp -rvf /artifacts_dir/* $CIRCLE_ARTIFACTS/; fi
