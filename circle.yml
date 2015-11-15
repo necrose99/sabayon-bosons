@@ -11,8 +11,8 @@ dependencies:
 test:
   override:
     - if [[ -e /artifacts_dir ]]; then sudo cp -rvf /artifacts_dir/* $CIRCLE_ARTIFACTS/; fi
-    - ~/boson -c ./sabayon-distro-QA.boson
-    - ~/boson -c ./for-gentoo-QA.boson
+    - ~/boson -c ./sabayon-distro-QA.boson || true
+    - ~/boson -c ./for-gentoo-QA.boson || true
 deployment:
   production:
     branch: master
