@@ -11,4 +11,4 @@ docker_image_entrypoint:
         - -c
 provisioner:
   shell.Shell:
-               - git clone https://github.com/Sabayon/for-gentoo.git /tmp/boson/github.com/Sabayon/for-gentoo && cd /tmp/boson/github.com/Sabayon/for-gentoo && repoman full && /usr/bin/equery has repository for-gentoo |  sed 's/^.[^ \t]* *[^ \t]* //;s/ .*//' | xargs -n1 /usr/local/bin/depcheck
+               - git clone https://github.com/Sabayon/for-gentoo.git /tmp/boson/github.com/Sabayon/for-gentoo && cd /tmp/boson/github.com/Sabayon/for-gentoo && repoman full;/usr/bin/equery has repository for-gentoo |  sed 's/^.[^ \t]* *[^ \t]* //;s/ .*//' | xargs -n1 /usr/local/bin/depcheck
