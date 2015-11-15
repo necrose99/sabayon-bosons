@@ -1,0 +1,13 @@
+---
+repository: https://github.com/Sabayon/for-gentoo.git
+docker_image: sabayon/builder-amd64
+artifacts_dir: /tmp/
+log_dir: /tmp/
+separate_artifacts: true
+tmpdir: /tmp/boson
+docker_image_entrypoint:
+        - /bin/sh
+        - -c
+provisioner:
+  shell.Shell:
+               - git clone https://github.com/Sabayon/for-gentoo.git /tmp/boson/github.com/Sabayon/for-gentoo && cd /tmp/boson/github.com/Sabayon/for-gentoo && repoman full
