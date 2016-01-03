@@ -13,13 +13,16 @@ cp -rfv services/* /etc/systemd/system/
 cp -rfv *.boson /
 
 systemctl daemon-reload
-
-for f in services/*.service do 
-	echo "Enabling service"
-	systemctl enable "$f"
-	systemctl start "$f"
+pushd services/
+for f in *.service;
+do
+        echo "Starting and enabling $f"
+        systemctl enable $f
+        systemctl start $f
 done
+popd
 
-
-
-
+mkdir -p /artifacts_dir/for-gentoo
+mkdir -p /artifacts_dir/sabayon-distro
+mkdir -p /log_dir/for-gentoo
+mkdir -p /log_dir/sabayon-distro
