@@ -43,6 +43,9 @@ Vagrant.configure(2) do |config|
      vb.memory = "1024"
      vb.cpus = 1
   end
+
+  config.vm.synced_folder "artifacts", "/artifacts_dir", create: true
+  config.vm.synced_folder "logs", "/logs_dir", create: true
   #
   # View the documentation for the provider you are using for more
   # information on available options.
