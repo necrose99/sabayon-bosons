@@ -1,0 +1,11 @@
+[Unit]
+Description=sabayon-distro amd64 boson service
+After=network.target
+
+[Service]
+User=root
+ExecStart=
+ExecStart=/usr/local/bin/boson -c /sabayon-distro-amd64.boson
+
+[Install]
+WantedBy=multi-user.target
