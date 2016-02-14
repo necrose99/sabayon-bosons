@@ -12,10 +12,13 @@ Vagrant.configure(2) do |config|
     mkdir -p /usr/portage/licenses/
     rsync -av -H -A -X --delete-during "rsync://rsync.at.gentoo.org/gentoo-portage/licenses/" "/usr/portage/licenses/"
     ls /usr/portage/licenses -1 | xargs -0 > /etc/entropy/packages/license.accept
-        
+
     sudo equo up && sudo equo u
     sudo echo -5 | equo conf update
-    sudo equo i docker
+    sudo equo i docker vixie-cron sabayon-devkit
+    systemctl enable vixie-cron
+    systemctl start vixie-cron
+    crontab /vagrant/conf/crontab
     sudo systemctl enable docker
     sudo systemctl start docker
     docker pull sabayon/builder-amd64
