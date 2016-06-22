@@ -1,7 +1,15 @@
 ---
-repository: https://github.com/Sabayon/sabayon-distro.git
+repository: https://github.com/glevand/coreos--coreos-overlay.git
+repository: https://github.com/glevand/coreos--rkt.git
 repository: git://anongit.gentoo.org/dev/maekke.git
-
+##AARM64/Arm8 /arm64 fork , Rocket , maekke has some gui X-11 libs. 
+https://github.com/gentoo/gentoo.git
+## Coreos is good for cloud , however to build sabayon 
+##I'd preffer Strait from the horse but TY coreos team for making it eassier.
+repository: https://github.com/Sabayon/sabayon-distro.git
+https://github.com/Sabayon/for-gentoo.git
+https://github.com/Spike-Pentesting/spike-overlay.git
+## Spike toys ofcourse... 
 docker_image: arm64-coreos
 preprocessor: gentoo.Gentoo
 separate_artifacts: false
