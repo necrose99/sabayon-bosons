@@ -1,0 +1,24 @@
+---
+repository: https://github.com/glevand/coreos--coreos-overlay.git
+repository: https://github.com/glevand/coreos--rkt.git
+repository: git://anongit.gentoo.org/dev/maekke.git
+##AARM64/Arm8 /arm64 fork , RKT/Rocket (like docker ) , maekke has some gui X-11 libs. 
+https://github.com/gentoo/gentoo.git
+## Coreos is good for cloud , however to build sabayon 
+##I'd preffer Strait from the horse but TY coreos team for making it eassier.
+repository: https://github.com/Sabayon/sabayon-distro.git
+https://github.com/Sabayon/for-gentoo.git
+https://github.com/Spike-Pentesting/spike-overlay.git
+## Spike toys ofcourse... 
+docker_image: arm64-coreos
+preprocessor: gentoo.Gentoo
+separate_artifacts: false
+tmpdir: /tmp/boson
+artifacts_dir: /artifacts_dir/sabayon-distro-arm64
+log_dir: /log_dir/sabayon-distro-arm64
+# ADD https://raw.githubusercontent.com/necrose99/sabayon-bosons/master/scripts/qemu-binfmt-conf.sh
+## Automgaical binfmt from Quemu onestop shopping... 
+docker_image_entrypoint: /builder
+volumes:
+    - /usr/bin/qemu-arm64-binfmt:/usr/bin/qemu-arm64-binfmt:ro
+- /builder:/builder:ro
