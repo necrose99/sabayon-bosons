@@ -6,4 +6,4 @@ File used by CircleCI to build packages on user request. You can inspect build c
 
 To set up your nightly, [look here](https://circleci.com/docs/nightly-builds)
 
-
+**install.sh** is meant as a quick install for VMs, don't use it on your local machine
