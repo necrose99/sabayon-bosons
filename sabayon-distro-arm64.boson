@@ -10,7 +10,7 @@ repository: https://github.com/Sabayon/sabayon-distro.git
 https://github.com/Sabayon/for-gentoo.git
 https://github.com/Spike-Pentesting/spike-overlay.git
 ## Spike toys ofcourse... 
-docker_image: arm64-coreos
+docker_image: varakur/arm64-coreos
 preprocessor: gentoo.Gentoo
 separate_artifacts: false
 tmpdir: /tmp/boson
@@ -18,5 +18,5 @@ artifacts_dir: /artifacts_dir/sabayon-distro-arm64
 log_dir: /log_dir/sabayon-distro-arm64
 docker_image_entrypoint: /builder
 volumes:
-    - /usr/bin/qemu-arm-binfmt:/usr/bin/qemu-arm64-binfmt:ro
+    - /usr/bin/qemu-arm64-binfmt:/usr/bin/qemu-arm64-binfmt:ro
     - /builder:/builder:ro
