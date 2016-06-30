@@ -18,5 +18,5 @@ artifacts_dir: /artifacts_dir/sabayon-distro-arm64
 log_dir: /log_dir/sabayon-distro-arm64
 docker_image_entrypoint: /builder
 volumes:
-    - /usr/bin/qemu-arm-binfmt:/usr/bin/qemu-arm-binfmt:ro
+    - /usr/bin/qemu-arm-binfmt:/usr/bin/qemu-arm64-binfmt:ro
     - /builder:/builder:ro
